@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-dark{
+    background-color: #171717;
+}
+
+.bg-light-dark{
+    background-color: #222222;
+}
+
+.red-color{
+    background-color: #DA0037;
+}
+
+
+body{
+    background-color: #171717;
+}
