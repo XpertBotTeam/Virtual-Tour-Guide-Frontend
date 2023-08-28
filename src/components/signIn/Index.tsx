@@ -3,6 +3,7 @@
 import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { useSignInMutation } from "@/app/api/UsersSlice";
 
 const validationSchema = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -14,6 +15,7 @@ const validationSchema = yup.object({
 });
 
 function Index() {
+  const [signIn,{isLoading,isSuccess,isError,error,data}] = useSignInMutation()
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -21,12 +23,14 @@ function Index() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      signIn(values)
     },
   });
   const { handleChange, handleBlur, handleSubmit, values, errors, touched } =
     formik;
 
+    console.log(error)
+    console.log(data)
   return (
     <form
       onSubmit={handleSubmit}

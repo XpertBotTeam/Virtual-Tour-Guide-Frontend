@@ -1,19 +1,22 @@
-import NavBar from '@/components/global/NavBar'
-import Footer from '@/components/global/Footer'
-import Index from '@/components/signUp/Index'
-import React from 'react'
+"use client";
+
+import React, { useState } from "react";
+import NavBar from "@/components/global/NavBar";
+import Footer from "@/components/global/Footer";
+import Index from "@/components/signUp/Index";
+import { ApiProvider } from "@reduxjs/toolkit/query/react";
+import { usersApi } from "../api/UsersSlice";
 
 function page() {
   return (
-    <div className='h-screen text-white'>
-        <NavBar/>
-        <div className='h-3/4 flex flex-col gap-4 justify-center items-center '>
-          <h1 className='text-3xl font-bold'>Sign Up</h1>
-            <Index/>
-        </div>
-        <Footer/>
-    </div>
-  )
+    <ApiProvider api={usersApi}>
+      <div className=" text-white">
+        <NavBar />
+        <Index />
+        <Footer />
+      </div>
+    </ApiProvider>
+  );
 }
 
-export default page
+export default page;
