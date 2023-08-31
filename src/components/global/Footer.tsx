@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-light-dark">
+    <footer className="bg-gray-footer">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -15,7 +15,7 @@ function Footer() {
                 className="mr-3"
                 alt="FlowBite Logo"
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-olive-green">
                 Virual Tour Guide
               </span>
             </a>
@@ -23,10 +23,10 @@ function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold  uppercase text-olive-green">
                 Follow us
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="  font-medium">
                 <li className="mb-4">
                   <a
                     href="https://github.com/themesberg/flowbite"
@@ -46,10 +46,10 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold  uppercase text-olive-green">
                 Legal
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="  font-medium">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     Privacy Policy
@@ -64,9 +64,9 @@ function Footer() {
             </div>
           </div>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <hr className="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          <span className="text-sm  sm:text-center ">
             © 2023{" "}
             
             . All Rights Reserved.
@@ -74,7 +74,7 @@ function Footer() {
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className=" hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-4 h-4"
@@ -93,7 +93,7 @@ function Footer() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className=" hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-4 h-4"
@@ -108,7 +108,7 @@ function Footer() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className=" hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-4 h-4"
@@ -127,7 +127,7 @@ function Footer() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className=" hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-4 h-4"
@@ -146,7 +146,7 @@ function Footer() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className=" hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-4 h-4"

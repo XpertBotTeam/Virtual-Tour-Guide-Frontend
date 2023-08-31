@@ -15,6 +15,20 @@
 }
 
 
-body{
-    background-color: #171717;
+.olive-green{
+    background-color:#657a42;
 }
+.hover-olive-green{
+    background-color:#7a8f58;
+}
+.light-olive-green{
+    background-color:#cdd6bb;
+}
+.hover-light-olive-green{
+    background-color: #e0ecc8;
+}
+
+.darker-div-bg{
+    background-color: #f3f3f3;
+}
+

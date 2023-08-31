@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useSignInMutation } from "@/app/api/UsersSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
 
 const validationSchema = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -26,60 +28,65 @@ function Index() {
       signIn(values)
     },
   });
+  const [showPass,setShowPass] = useState(false)
   const { handleChange, handleBlur, handleSubmit, values, errors, touched } =
     formik;
 
-    console.log(error)
-    console.log(data)
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col w-1/3 justify-center items-center p-12 bg-light-dark rounded-md"
+      className="flex flex-col w-1/3 justify-center items-center p-12  rounded-md bg-darker-div-bg"
     >
       <div className="mb-6 w-full">
         <label
           htmlFor="email"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm font-medium text-black-text "
         >
           Email
         </label>
         <input
           type="text"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300  text-sm rounded-md block w-full p-2.5  "
           placeholder="Enter Email..."
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.email}
         />
         {touched.email && errors.email ? (
-          <div className="text-red-500">{errors.email}</div>
+          <div className="text-olive-green">{errors.email}</div>
         ) : null}
       </div>
       <div className="mb-6 w-full">
-        <label
-          htmlFor="password"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          id="password"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Enter Password..."
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-        />
-        {touched.password && errors.password ? (
-          <div className="text-red-500">{errors.password}</div>
-        ) : null}
-      </div>
+          <label
+            htmlFor="password"
+            className="block mb-2 text-sm font-medium text-black-text "
+          >
+            Password
+          </label>
+          <div className="relative">
+            <input
+              type={!showPass?"password":"text"}
+              id="password"
+              className="bg-gray-50 border border-gray-300 text-black-text text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10"
+              placeholder="Enter Password..."
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+            />
+            <span onClick={()=>setShowPass(!showPass)} className="absolute top-1/2 transform -translate-y-1/2 right-2 text-sm text-black-text cursor-pointer">
+            <FontAwesomeIcon icon={faEye} />
 
-      <button type="submit" className="red-color w-1/3 py-3 rounded-md">
-        Submit
-      </button>
+            </span>
+          </div>
+          {touched.password && errors.password ? (
+            <div className="text-olive-green">{errors.password}</div>
+          ) : null}
+        </div>
+
+      <button type="submit" className="bg-olive-green hover:bg-hover-olive-green transition-all duration-300 w-1/3 py-3 rounded-md">
+          Submit
+        </button>
     </form>
   );
 }
