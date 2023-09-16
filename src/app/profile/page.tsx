@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import React from "react";
 import { ToursSlice } from "../api/toursSlice";
+import PostsLogic from "@/components/profile/PostLogic/PostsLogic";
 
 function page() {
   return (
@@ -31,6 +32,7 @@ function page() {
         </div>
 
         <AddPostForm/>
+        <PostsLogic/>
 
       </div>
       <div className="absolute bottom-0 w-full">

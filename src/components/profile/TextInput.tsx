@@ -7,7 +7,8 @@ function TextInput({
     value,
     touched,
     error,
-    name
+    name,
+    disabled
   }: {
     title: string;
     handleChange: any;
@@ -15,7 +16,8 @@ function TextInput({
     value: any;
     touched: any;
     error: any;
-    name:string
+    name:string,
+    disabled:boolean
   }) {
     return (
       <div className="mb-4 w-full">
@@ -34,6 +36,7 @@ function TextInput({
             onChange={handleChange}
             onBlur={handleBlur}
             value={value}
+            disabled={disabled}
           />
           {touched && error ? (
             <div className="text-olive-green">{error}</div>

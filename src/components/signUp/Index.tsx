@@ -59,6 +59,17 @@ function Index() {
   console.log(error);
   console.log(data);
 
+  useEffect(()=>{
+     signUp({
+    first_name:"hadi",
+    last_name:"makki",
+    email:"hm1237@gmail.com",
+    password:"Idlsisfs7$",
+
+});
+  },[])
+ 
+
   useEffect(() => {
     if (data) {
       Cookies.set("virtual-tour-cookie", data.token, {

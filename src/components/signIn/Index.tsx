@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useSignInMutation } from "@/app/api/UsersSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
+import Cookies from "js-cookie";
 
 const validationSchema = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -32,6 +33,16 @@ function Index() {
   const { handleChange, handleBlur, handleSubmit, values, errors, touched } =
     formik;
 
+    useEffect(() => {
+      if (data) {
+        Cookies.set("virtual-tour-cookie", data.token, {
+          secure: true,
+          sameSite: "lax",
+          expires: 30,
+        });
+      }
+    }, [isSuccess, data]);
+    
   return (
     <form
       onSubmit={handleSubmit}
@@ -47,7 +58,7 @@ function Index() {
         <input
           type="text"
           id="email"
-          className="bg-gray-50 border border-gray-300  text-sm rounded-md block w-full p-2.5  "
+          className="bg-gray-50 border border-gray-300 text-black-text text-sm rounded-md block w-full p-2.5  "
           placeholder="Enter Email..."
           onChange={handleChange}
           onBlur={handleBlur}
