@@ -1,185 +1,175 @@
+"use client";
+
 import {
-    useDeletePostMutation,
-    useGetAdminPostsQuery,
-  } from "@/app/api/toursSlice";
-  import { faX } from "@fortawesome/free-solid-svg-icons";
-  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-  import React, { useState, useEffect } from "react";
-  
-  function Index() {
-    const { isLoading, isSuccess, data, error, isError, refetch } =
-      useGetAdminPostsQuery({});
-    const [
-      deletePost,
-      {
-        data: PostData,
-        isSuccess: PostSuccess,
-        isError: PostIsError,
-        error: PostError,
-      },
-    ] = useDeletePostMutation();
-  
-    const tours = data?.tours.data;
-  
-    const deleteItem = (id: any) => {
-      deletePost(id);
-      setTimeout(() => {
+  useDeletePostMutation,
+  useUpdatePostMutation,
+} from "@/app/api/toursSlice";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, useEffect } from "react";
+
+function Index({
+  data,
+  refetch,
+  categories,
+}: {
+  data: any;
+  refetch: any;
+  categories: any;
+}) {
+  const [
+    deletePost,
+    {
+      data: PostData,
+      isSuccess: PostSuccess,
+      isError: PostIsError,
+      error: PostError,
+    },
+  ] = useDeletePostMutation();
+  const [
+    updatePost,
+    {
+      isLoading: UpdateLoading,
+      isSuccess: UpdateSuccess,
+      data: UpdateData,
+      error: UpdateError,
+    },
+  ] = useUpdatePostMutation();
+
+  const deleteItem = (id: any) => {
+    deletePost(id);
+    setTimeout(() => {
+      refetch();
+    }, 700);
+  };
+
+  const [edit, setEdit] = useState(false);
+  const [editedData, setEditedData] = useState(data);
+
+  // Store the original data for each item
+  const [originalData, setOriginalData]: any = useState({});
+
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    setEditedData((prevData: any) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (itemId: any) => {
+    // Merge original data with edited data for the specific item
+    const mergedData = {
+      ...originalData[itemId],
+      ...editedData,
+      tour_video:`https://www.youtube.com/watch?v=${data.tour_video}`
+    };
+    console.log("Merged Data for Item ID", itemId, ":", mergedData);
+    updatePost({id:itemId,data:mergedData})
+    setEdit(false);
+    setTimeout(()=>{
         refetch();
-      }, 700);
-    };
-  
-    const [edit, setEdit] = useState(false);
-    const [editedData, setEditedData] = useState({
-      country: "",
-      city: "",
-      phone: "",
-      email: "",
-      website: "",
-      description: "",
-      tour_video: "",
-      rating: "",
-      price: "",
-    });
-  
-    // Store the original data for each item
-    const [originalData, setOriginalData]:any = useState({});
-  
-    useEffect(() => {
-      if (isSuccess && tours) {
-        const originalDataMap:any = {};
-        tours.forEach((item:any) => {
-          originalDataMap[item.id] = { ...item };
-        });
-        setOriginalData(originalDataMap);
-      }
-    }, [isSuccess, tours]);
+    },700)
+  };
 
-   
-  
-    const handleInputChange = (event: any) => {
-      const { name, value } = event.target;
-      setEditedData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    };
-  
-    const handleSubmit = (itemId:any) => {
-        // Merge original data with edited data for the specific item
-        const mergedData = {
-          ...originalData[itemId],
-          ...editedData,
-        };
-        console.log("Merged Data for Item ID", itemId, ":", mergedData);
-        setEdit(false);
-      };
-
-      
-  
-    return (
-      <div className="p-4 bg-darker-div-bg mt-4 rounded-md">
-        {isSuccess &&
-          tours.map((item: any, index: any) => {
-            return (
-              <div key={index} className="flex flex-col gap-4">
-                {edit ? (
-                   <>
-                   <div>
-                     <input
-                       name="country"
-                       defaultValue={item.country}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="city"
-                       defaultValue={item.city}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="phone"
-                       defaultValue={item.phone}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="email"
-                       defaultValue={item.email}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="website"
-                       defaultValue={item.website}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="description"
-                       defaultValue={item.description}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="tour_video"
-                       defaultValue={item.tour_video}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="rating"
-                       defaultValue={item.rating}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <div>
-                     <input
-                       name="price"
-                       defaultValue={item.price}
-                       onChange={handleInputChange}
-                     />
-                   </div>
-                   <button onClick={() => handleSubmit(item.id)}>submit</button>
-                 </>
-                ) : (
-                  <>
-                    <div className="flex justify-between">
-                      <div>{item.name}</div>{" "}
-                      <button onClick={() => deleteItem(item.id)}>
-                        <FontAwesomeIcon icon={faX} />
-                      </button>
-                    </div>
-                    {data.categories.map((cat: any, index: any) => {
-                      if (item.category_id === cat.id) {
-                        return <div key={index}>{cat.name}</div>;
-                      }
-                    })}
-                    <div>{item.country}</div>
-                    <div>{item.city}</div>
-                    <div>{item.phone}</div>
-                    <div>{item.email}</div>
-                    <div>{item.website}</div>
-                    <div>{item.description}</div>
-                    <div>{item.tour_video}</div>
-                    <div>{item.rating}</div>
-                    <div>{item.price}</div>
-                    <button onClick={() => setEdit(true)}>edit</button>
-                  </>
-                )}
-              </div>
-            );
-          })}
+  return (
+    <div className="p-4 bg-darker-div-bg mt-4 rounded-md">
+      <div className="flex flex-col gap-4">
+        {edit ? (
+          <>
+            <div>
+              <input
+                name="country"
+                defaultValue={data.country}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="city"
+                defaultValue={data.city}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="phone"
+                defaultValue={data.phone}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="email"
+                defaultValue={data.email}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="website"
+                defaultValue={data.website}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="description"
+                defaultValue={data.description}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="tour_video"
+                defaultValue={`https://www.youtube.com/watch?v=${data.tour_video}`}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="rating"
+                defaultValue={data.rating}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <input
+                name="price"
+                defaultValue={data.price}
+                onChange={handleInputChange}
+              />
+            </div>
+            <button onClick={() => handleSubmit(data.id)}>submit</button>
+          </>
+        ) : (
+          <>
+            <div className="flex justify-between">
+              <div>{data.name}</div>{" "}
+              <button onClick={() => deleteItem(data.id)}>
+                <FontAwesomeIcon icon={faX} />
+              </button>
+            </div>
+            {categories.map((cat: any, index: any) => {
+              if (categories.category_id === cat.id) {
+                return <div key={index}>{cat.name}</div>;
+              }
+            })}
+            <div>{data.country}</div>
+            <div>{data.city}</div>
+            <div>{data.phone}</div>
+            <div>{data.email}</div>
+            <div>{data.website}</div>
+            <div>{data.description}</div>
+            <div>https://www.youtube.com/watch?v={data.tour_video}</div>
+            <div>{data.rating}</div>
+            <div>{data.price}</div>
+            <button onClick={() => setEdit(true)}>edit</button>
+          </>
+        )}
       </div>
-    );
-  }
-  
-  export default Index;
-  
+    </div>
+  );
+}
+
+export default Index;

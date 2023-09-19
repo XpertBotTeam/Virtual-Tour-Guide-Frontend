@@ -13,7 +13,7 @@ export const ToursSlice = createApi({
   endpoints: (builder) => ({
     createPost: builder.mutation({
       query: (data) => ({
-        url: `/tours`,
+        url: `/adminTours`,
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -86,5 +86,6 @@ export const {
   useCreateCategoryMutation,
   useGetCategoriesQuery,
   useGetAdminPostsQuery,
-  useDeletePostMutation
+  useDeletePostMutation,
+  useUpdatePostMutation
 } = ToursSlice;

@@ -55,8 +55,7 @@ function AddPostForm() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       // Set the form values for country and city
-      console.log(values);
-      console.log('fetched')
+
       createPost(values);
     },
   });
@@ -77,7 +76,8 @@ function AddPostForm() {
       
     }, [selectedCountry,selectedCity,values])
 
-   
+    console.log(data)
+    console.log(error)
 
   return (
     <div className="flex flex-col justify-center items-center p-4 bg-darker-div-bg mt-4 rounded-md">
@@ -217,7 +217,7 @@ function AddPostForm() {
           touched={touched.price}
           disabled={false}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className="px-4 py-2 bg-olive-green text-white font-semibold rounded-md">Submit</button>
       </form>
     </div>
   );
