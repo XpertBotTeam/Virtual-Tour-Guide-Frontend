@@ -5,7 +5,7 @@ import React from 'react'
 
 function NavBar() {
   return (
-    <div className='w-full p-2 px-4  flex justify-between items-center  bg-olive-green'>
+    <div className='w-full p-2 px-4  flex justify-between items-center  bg-olive-green text-white'>
         <Link href={"/"}><Image src={"/virtualPng.png"} height={40} width={40} alt='logo'/> </Link>
         <div className='flex justify-center items-center gap-4 '>
             <Link href={"/sign-in"} className='hover:underline'>Sign In</Link>
