@@ -4,6 +4,7 @@ import Footer from '../global/Footer'
 import Carousel from './Carousel/Carousel'
 
 
+
 function Index() {
   return (
     <div>

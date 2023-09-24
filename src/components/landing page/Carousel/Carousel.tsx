@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 import "./carousel.css";
+import Link from "next/link";
 
 function Carousel() {
   const slides = [
@@ -14,7 +15,7 @@ function Carousel() {
       url: "https://images.unsplash.com/photo-1521327895744-46e309d005b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     },
     {
-      url: "https://images.unsplash.com/photo-1618481293647-ee7605370f5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2034&q=80",
+      url: "https://images.unsplash.com/photo-1572696442982-293077e0a9c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     },
 
     {
@@ -54,15 +55,29 @@ function Carousel() {
     }, 10000);
   }, [currentIndex]);
 
-  console.log(currentIndex)
+  console.log(currentIndex);
 
   return (
     <div className="w-full h-[94vh]  m-auto relative group ">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className={`h-full w-full bg-center bg-cover duration-1000 animate `}
-      ></div>
+        className={`h-full w-full bg-center bg-cover duration-1000 animate relative flex flex-col justify-center items-start`}
+      >
+        {" "}
+        <div className="absolute ml-52 mb-36 flex flex-col gap4">
+          {" "}
+          <h2 className="text-8xl font-semibold text-white">Welcome To </h2>
+          <h1 className="text-9xl font-semibold text-white">LEBANON</h1>{" "}
+          <Link
+            href={"tours"}
+            className="text-4xl px-8 py-4 bg-olive-green hover:bg-hover-olive-green  text-white rounded-md w-1/2 transition-all duration-300"
+          >
+            Explore More
+          </Link>
+        </div>
+      </div>
       {/* Left Arrow */}
+
       <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
         <BsChevronCompactLeft onClick={prevSlide} size={30} />
       </div>
