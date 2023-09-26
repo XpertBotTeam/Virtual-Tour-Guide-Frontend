@@ -1,0 +1,99 @@
+
+
+
+  .pFeaturedCard { 
+      color: #fff; 
+      height: 10.6rem; 
+      text-align: center; 
+      cursor: pointer;
+  } 
+  
+  :-webkit-scrollbar { 
+      width: 5px;
+  } 
+  
+  :-webkit-scrollbar-thumb { 
+      background: grey; 
+      border-radius: 10px;
+  } 
+  
+  :-webkit-scrollbar-track { 
+      box-shadow: inset 0 0 5px grey; 
+      border-radius: 10px;
+  } 
+  
+
+  
+  :-webkit-scrollbar-thumb:hover { 
+      background: #00a5ff;
+  } 
+  
+  .pCardUpper { 
+      height: 5.4rem;
+  } 
+  
+  .pCardLower { 
+      background-color: #111; 
+      height: 5.2rem;
+  } 
+  
+  img { 
+      margin: 0; 
+      padding: 0; 
+      border: 0; 
+      outline: 0; 
+
+      font-size: 100%; 
+
+      vertical-align: baseline;
+  } 
+  
+  .pCardUpperImage { 
+      height: 2.9em; 
+      width: 3em;
+      margin: auto; 
+      top: 20px; 
+      position: relative;
+  } 
+  
+  .pFeaturedCard:hover .pCardUpperImage { 
+    transition: all .2s ease-in-out;
+      filter: drop-shadow(2px 4px 6px #000);
+      
+  } 
+  
+  .pFCardTitle { 
+      border-width: 1px; 
+      margin: 0 16px; 
+      padding: 9px 1px 0 1px; 
+      line-height: 15px; 
+      font-size: 15px; 
+      font-weight: 700;
+  } 
+  
+  .pFCardSubText { 
+      font-size: 11px; 
+
+      margin: 0 19px; 
+      padding: 3px; 
+      padding-top: 2px;
+  } 
+  
+  .pFCardButton { 
+      margin: 0 18px; 
+      margin-top: 4px; 
+      font-size: 12px; 
+      border-radius: 3px; 
+      padding: 5px 0; 
+      line-height: 15px;
+  } 
+  
+  
+  /* These were inline style tags. Uses id+class to override almost everything */
+  #style-3wP1j.style-3wP1j {  
+     background-color: #C27E42B2;  
+  }  
+  #style-IjDoG.style-IjDoG {  
+     background-color: #C27E42;  
+  }  
+  

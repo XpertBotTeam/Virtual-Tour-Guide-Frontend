@@ -78,6 +78,40 @@ export const ToursSlice = createApi({
         },
       }),
     }),
+    getTours: builder.query({
+      query: () => ({
+        url: "Tours",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${cookie}`,
+        },
+      }),
+    }),
+    getSingleTour: builder.query({
+      query: (id) => ({
+        url: `Tours/${id}`,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${cookie}`,
+        },
+      }),
+    }),
+    createReview: builder.mutation({
+      query: ({id,data}) => ({
+        url: `tours/${id}/reviews`,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${cookie}`,
+        },
+        method: "POST",
+        body: data,
+      }),
+    }),
+    
+    
   }),
 });
 
@@ -87,5 +121,9 @@ export const {
   useGetCategoriesQuery,
   useGetAdminPostsQuery,
   useDeletePostMutation,
-  useUpdatePostMutation
+  useUpdatePostMutation,
+  useGetToursQuery,
+  useGetSingleTourQuery,
+ useCreateReviewMutation
+
 } = ToursSlice;

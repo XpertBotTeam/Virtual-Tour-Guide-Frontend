@@ -1,0 +1,91 @@
+@font-face { 
+    font-family:din;
+    src:url(https://www.cyark.org/fonts/din-regular.woff) format('woff'),url(https://www.cyark.org/fonts/din-regular.svg) format('svg');
+    font-weight:400;
+    font-style:normal;
+  } 
+  @font-face { 
+    font-family:din;
+    src:url(https://www.cyark.org/fonts/din-medium.woff) format('woff'),url(https://www.cyark.org/fonts/din-medium.svg) format('svg');
+    font-weight:500;
+    font-style:normal;
+  } 
+  @font-face { 
+    font-family:din;
+    src:url(https://www.cyark.org/fonts/din-bold.woff) format('woff'),url(https://www.cyark.org/fonts/din-bold.svg) format('svg');
+    font-weight:700;
+    font-style:normal;
+  } 
+  @font-face { 
+    font-family:proximanova;
+    src:url(https://www.cyark.org/fonts/proximanova.woff) format('woff'),url(https://www.cyark.org/fonts/proximanova.svg) format('svg');
+    font-weight:400;
+    font-style:normal;
+  } 
+  @font-face { 
+    font-family:proximanova;
+    src:url(https://www.cyark.org/fonts/proximanova-semibold.woff) format('woff'),url(https://www.cyark.org/fonts/proximanova-semibold.svg) format('svg');
+    font-weight:500;
+    font-style:normal;
+  } 
+  @font-face { 
+    font-family:proximanova;
+    src:url(https://www.cyark.org/fonts/proximanova-bold.woff) format('woff'),url(https://www.cyark.org/fonts/proximanova-bold.svg) format('svg');
+    font-weight:700;
+    font-style:normal;
+  } 
+
+  
+
+  
+
+  
+  img { 
+      margin: 0; 
+      padding: 0; 
+      border: 0; 
+      outline: 0; 
+      font-weight: inherit; 
+      font-style: inherit; 
+      font-size: 100%; 
+      font-family: inherit; 
+      vertical-align: baseline;
+  } 
+  
+  .tileBg { 
+      position: absolute; 
+      top: 0; 
+      right: 0; 
+      bottom: 0; 
+      left: 0; 
+      border: none; 
+      outline: 0; 
+      opacity: 0;
+  } 
+  
+  :-webkit-scrollbar { 
+      width: 5px;
+  } 
+  
+  :-webkit-scrollbar-thumb { 
+      background: grey; 
+      border-radius: 10px;
+  } 
+  
+  :-webkit-scrollbar-thumb:hover { 
+      background: #00a5ff;
+  } 
+  
+  :-webkit-scrollbar-track { 
+      box-shadow: inset 0 0 5px grey; 
+      border-radius: 10px;
+  } 
+  
+  
+  /* These were inline style tags. Uses id+class to override almost everything */
+  #style-qrhHB.style-qrhHB {  
+     opacity: 1;  
+      height: 245.64px;  
+      width: 384px;  
+  }  
+  
