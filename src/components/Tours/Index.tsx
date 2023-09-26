@@ -1,35 +1,43 @@
 import React from "react";
 import NavBar from "../global/NavBar";
-import { useGetCategoriesQuery } from "@/app/api/toursSlice";
+import { useGetCategoriesQuery, useGetToursQuery } from "@/app/api/toursSlice";
 import SearchBar from "./components/SearchBar";
 import TourCard from "./components/tour card/TourCard";
 
 function Index() {
   const {
     data: Categories,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
+    isLoading: CatLoading,
+    isSuccess: CatSuccess,
+    isError: CatIsError,
+    error: CatError,
   } = useGetCategoriesQuery({});
-  const tours= [
-    1,2,3,4,5,6,7
-  ]
+
+  const {
+    data: Tours,
+    isLoading: ToursLoading,
+    isSuccess: ToursSuccess,
+    isError: ToursIsError,
+    error: ToursError,
+  } = useGetToursQuery({});
+
+
+ 
+
 
   return (
     <div>
       <NavBar />
       <div className="bg-neutral-100 p-2">
         <div className="w-96">
-            <SearchBar/>
+          <SearchBar />
         </div>
-        
       </div>
-      <div className="flex flex-wrap">
-        {tours.map((tour,index)=>{
-            return <TourCard key={index}/>
+      {ToursSuccess && Tours?.tours.data && <div className="flex flex-wrap">
+        {Tours?.tours.data.map((tour:any, index:number) => {
+          return <TourCard key={index} tour={tour}/>;
         })}
-      </div>
+      </div>}
     </div>
   );
 }

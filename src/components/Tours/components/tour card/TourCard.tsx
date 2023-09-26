@@ -2,14 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-function TourCard() {
+function TourCard({tour}:{tour:any}) {
   const [show, setShow] = useState(false);
+
+  console.log(tour)
 
   return (
     <Link
       onMouseOverCapture={() => setShow(true)}
       onMouseOutCapture={() => setShow(false)}
-      href={"tour/1"}
+      href={`tour/${tour.id}`}
       className="w-1/5  h-60 relative overflow-hidden text-white"
     >
       <div>
@@ -28,14 +30,14 @@ function TourCard() {
               !show && "translate-y-8"
             } transition-all duration-500`}
           >
-            this is beirut
+            {tour.name}
           </div>
           <div
             className={`${
               !show && "translate-y-12"
             } transition-all duration-500`}
           >
-            come visit the best country in the world
+            {tour.description}
           </div>
         </div>
       </div>
