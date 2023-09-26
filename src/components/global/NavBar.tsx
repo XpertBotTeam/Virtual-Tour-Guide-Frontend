@@ -1,10 +1,18 @@
+'use client'
 import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function NavBar() {
-  const auth = Cookies.get("virtual-tour-cookie");
+  const [auth, setAuth] = useState(null);
+
+  useEffect(() => {
+
+    const isAuthenticated:any = Cookies.get("virtual-tour-cookie");
+    setAuth(isAuthenticated);
+  }, []);
+
   return (
     <div className="w-full p-2 px-4  flex justify-between items-center  bg-olive-green text-white">
       <Link href={"/"}>
