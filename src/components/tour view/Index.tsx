@@ -31,7 +31,7 @@ function Index({ id }: { id: any }) {
                 {data?.tour.country}
               </div>
             </div>
-            <div className="bg-red-600 rounded-lg w-40">
+            <div className="bg-gray-200 rounded-lg w-40">
               
               <iframe
                allowFullScreen
@@ -48,7 +48,7 @@ function Index({ id }: { id: any }) {
             Lorem Ipsum Verbum
           </div>
           <div>
-            <Explore3D />
+            <Explore3D id={id.id}/>
           </div>
           <ReviewForm id={id.id} />
           <Reviews/>

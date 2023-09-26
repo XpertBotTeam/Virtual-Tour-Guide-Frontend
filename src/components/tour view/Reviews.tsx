@@ -22,8 +22,8 @@ function Reviews() {
   ];
   return (
     <div>
-        <h1 className="text-2xl text-black-text font-semibold font-sans">Reviews</h1>
-        <div className="h-56 overflow-y-scroll mt-8">
+        <h1 className="text-2xl text-black-text font-semibold font-sans mt-8 mb-3">Reviews</h1>
+        <div className="h-56 overflow-y-scroll ">
         
           {reviews.map((review, index) => {
             return (

@@ -24,7 +24,7 @@ function NavBar() {
         </div>
       ) : (
         <div>
-          <Link href={"profile"}>profile</Link>
+          <Link href={"/profile"}>profile</Link>
         </div>
       )}
     </div>
