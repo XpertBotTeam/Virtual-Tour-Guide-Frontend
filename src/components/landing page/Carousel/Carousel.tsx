@@ -60,17 +60,17 @@ function Carousel() {
   return (
     <div className="w-full h-[94vh]  m-auto relative group ">
       <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+        style={{ backgroundImage: `url(${slides[currentIndex].url}) ` }}
         className={`h-full w-full bg-center bg-cover duration-1000 animate relative flex flex-col justify-center items-start`}
       >
         {" "}
-        <div className="absolute ml-52 mb-36 flex flex-col gap4">
+        <div className="absolute max-[860px]:ml-24 max-[590px]:ml-12 ml-52 mb-36 flex flex-col gap4">
           {" "}
-          <h2 className="text-8xl font-semibold text-white">Welcome To </h2>
-          <h1 className="text-9xl font-semibold text-white">LEBANON</h1>{" "}
+          <h2 className="text-8xl max-[1300px]:text-5xl max-[590px]:text-3xl  font-semibold text-white">Welcome To </h2>
+          <h1 className="text-9xl max-[1300px]:text-6xl max-[590px]:text-4xl font-semibold text-white">LEBANON</h1>{" "}
           <Link
             href={"tours"}
-            className="text-4xl px-8 py-4 bg-olive-green hover:bg-hover-olive-green  text-white rounded-md w-1/2 transition-all duration-300"
+            className="text-4xl max-[1300px]:text-lg max-[590px]:text-base  px-4 py-2 bg-olive-green hover:bg-hover-olive-green  text-white rounded-md w-1/2 max-[590px]:w-3/4 transition-all duration-300"
           >
             Explore More
           </Link>

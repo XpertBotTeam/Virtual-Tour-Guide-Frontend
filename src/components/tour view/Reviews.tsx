@@ -28,9 +28,7 @@ function Reviews() {
           {reviews.map((review, index) => {
             return (
               <div key={index} className="p-4 flex  items-center gap-4">
-                <div className="w-12 h-12 bg-olive-green rounded-full flex justify-center items-center">
-                  prof
-                </div>
+                <Image src={'/user.png'} width={50} height={50} alt="profile"/>
                 <div className="flex flex-col gap-1"><div>{review.username}</div> <div>{review.review}</div></div>
               </div>
             );

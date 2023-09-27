@@ -12,7 +12,7 @@ function TourCard({tour}:{tour:any}) {
       onMouseOverCapture={() => setShow(true)}
       onMouseOutCapture={() => setShow(false)}
       href={`tour/${tour.id}`}
-      className="w-1/5  h-60 relative overflow-hidden text-white"
+      className="w-1/5 max-[900px]:w-1/3 max-[700px]:w-full  h-60 relative overflow-hidden text-white"
     >
       <div>
         <Image

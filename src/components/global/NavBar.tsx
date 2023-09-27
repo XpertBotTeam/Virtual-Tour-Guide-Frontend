@@ -32,7 +32,7 @@ function NavBar() {
         </div>
       ) : (
         <div>
-          <Link href={"/profile"}>profile</Link>
+          <Link href={"/profile"}><Image src={'/user.png'} alt="user" width={50} height={50}/></Link>
         </div>
       )}
     </div>

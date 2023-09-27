@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function Explore3D({id}:{id:number}) {
   return (
-    <div className="pFeaturedCard w-1/3 m-auto mt-4">
+    <div className="pFeaturedCard w-1/3 max-[850px]:w-full rounded-md overflow-hidden m-auto mt-4">
       <Link href={`video/${id}`}>
         <div className="pCardUpper style-3wP1j" id="style-3wP1j">
           <Image
